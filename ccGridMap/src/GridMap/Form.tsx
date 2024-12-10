@@ -1,0 +1,240 @@
+import { FileInput, Label, TextInput } from "flowbite-react";
+import { AiOutlineRadiusUpleft } from "react-icons/ai";
+import { MdGrid4X4 } from "react-icons/md";
+import {
+  PiColumnsPlusRightFill,
+  PiRowsPlusBottomFill,
+  PiSquareBold,
+  PiSquaresFourBold,
+  PiResizeBold,
+  PiArrowsOutLineVerticalFill,
+} from "react-icons/pi";
+import Sketch from "../Sketch";
+
+type PropsType = {
+  options: {
+    cols: number;
+    rows: number;
+    square: number;
+    px: number;
+    margin: number;
+    strokeWidth: number;
+    cornerRadius: number;
+    fill: string;
+    stroke: string;
+    bgFill: string;
+    line: number;
+    lineWidth: number;
+    lineFill: string;
+    bgImage: string;
+  };
+  update: Function;
+};
+type SketchOnChangeType = {
+  r: number;
+  g: number;
+  b: number;
+  a: number;
+};
+
+function Form({ options, update }: PropsType) {
+  return (
+    <article className="m-auto max-w-4xl xl:max-w-7xl my-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+        <div>
+          <Label htmlFor="cols" value="横幅" />
+          <TextInput
+            id="cols"
+            type="number"
+            min="1"
+            icon={PiColumnsPlusRightFill}
+            value={options.cols}
+            onChange={(e) => {
+              const v = Number(e.target.value)
+              update("cols", v > 0 ? v : 1)
+            }}
+          />
+        </div>
+        <div>
+          <Label htmlFor="rows" value="縦幅" />
+          <TextInput
+            id="rows"
+            type="number"
+            min="1"
+            icon={PiRowsPlusBottomFill}
+            value={options.rows}
+            onChange={(e) => {
+              const v = Number(e.target.value)
+              update("rows", v > 0 ? v : 1)
+            }}
+          />
+        </div>
+        <div>
+          <Label htmlFor="square" value="1マスあたり駒サイズいくつ？" />
+          <TextInput
+            id="square"
+            type="number"
+            min="1"
+            icon={PiSquareBold}
+            value={options.square}
+            onChange={(e) => {
+              const v = Number(e.target.value)
+              update("square", v > 0 ? v : 1)
+            }}
+          />
+        </div>
+        <div>
+          <Label htmlFor="px" value="1マスあたり何px？" />
+          <TextInput
+            id="px"
+            type="number"
+            min="1"
+            icon={PiResizeBold}
+            value={options.px}
+            onChange={(e) => {
+              const v = Number(e.target.value)
+              update("px", v > 0 ? v : 1)
+            }}
+          />
+        </div>
+        <div>
+          <Label htmlFor="margin" value="余白は何px？" />
+          <TextInput
+            id="margin"
+            type="number"
+            min="0"
+            icon={PiSquaresFourBold}
+            value={options.margin}
+            onChange={(e) => {
+              const v = Number(e.target.value)
+              update("margin", v > 0 ? v : 0)
+            }}
+          />
+        </div>
+        <div>
+          <Label htmlFor="strokeWidth" value="線の太さ何px？" />
+          <TextInput
+            id="strokeWidth"
+            type="number"
+            min="0"
+            icon={PiArrowsOutLineVerticalFill}
+            value={options.strokeWidth}
+            onChange={(e) => {
+              const v = Number(e.target.value)
+              update("strokeWidth", v > 0 ? v : 0)
+            }}
+          />
+        </div>
+        <div>
+          <Label htmlFor="cornerRadius" value="マスの丸みは何px？" />
+          <TextInput
+            id="cornerRadius"
+            type="number"
+            min="0"
+            icon={AiOutlineRadiusUpleft}
+            value={options.cornerRadius}
+            onChange={(e) => {
+              const v = Number(e.target.value)
+              update("cornerRadius", v > 0 ? v : 0)
+            }}
+          />
+        </div>
+        <div>
+          <Sketch
+            id="fill"
+            value="マスの色"
+            color={options.fill}
+            onChange={(e: SketchOnChangeType) =>
+              update("fill", `rgba(${e.r}, ${e.g}, ${e.b}, ${e.a})`)
+            }
+          />
+        </div>
+        <div>
+          <Sketch
+            id="stroke"
+            value="線の色"
+            color={options.stroke}
+            onChange={(e: SketchOnChangeType) =>
+              update("stroke", `rgba(${e.r}, ${e.g}, ${e.b}, ${e.a})`)
+            }
+          />
+        </div>
+        <div>
+          <Sketch
+            id="bgFill"
+            value="背景の色"
+            color={options.bgFill}
+            onChange={(e: SketchOnChangeType) =>
+              update("bgFill", `rgba(${e.r}, ${e.g}, ${e.b}, ${e.a})`)
+            }
+          />
+        </div>
+        <div>
+          <Label htmlFor="line" value="何マスごとに罫線を引く？" />
+          <TextInput
+            id="line"
+            type="number"
+            min="0"
+            icon={MdGrid4X4}
+            value={options.line}
+            onChange={(e) => {
+              const v = Number(e.target.value)
+              update("line", v > 0 ? v : 0)
+            }}
+          />
+        </div>
+        <div>
+          <Label htmlFor="lineWidth" value="罫線の太さ何px？" />
+          <TextInput
+            id="lineWidth"
+            type="number"
+            min="0"
+            icon={PiArrowsOutLineVerticalFill}
+            value={options.lineWidth}
+            onChange={(e) => {
+              const v = Number(e.target.value)
+              update("lineWidth", v > 0 ? v : 0)
+            }}
+          />
+        </div>
+        <div>
+          <Sketch
+            id="lineFill"
+            value="罫線の色"
+            color={options.lineFill}
+            onChange={(e: SketchOnChangeType) =>
+              update("lineFill", `rgba(${e.r}, ${e.g}, ${e.b}, ${e.a})`)
+            }
+          />
+        </div>
+        <div className="col-span-2">
+          <Label htmlFor="bgImage" value="お試し画像" />
+          <FileInput
+            id="bgImage"
+            accept="image/*"
+            onChange={(event) => {
+              const target = event.target;
+              const files = target.files;
+              if (files == null) return;
+              const file = files[0];
+              if (file == null) return;
+              const type = file.type;
+              if (!/^image/.test(type)) return;
+              const reader = new FileReader();
+              reader.onload = (e) => {
+                const target = e.target;
+                if (target == null) return;
+                const result = target.result;
+                if (result == null) return;
+                update("bgImage", String(result));
+              };
+              reader.readAsDataURL(file);
+            }}
+          />
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export default Form;
