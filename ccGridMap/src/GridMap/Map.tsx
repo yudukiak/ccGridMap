@@ -1,5 +1,5 @@
-import { Fragment, useRef } from "react";
-import { Button } from "flowbite-react";
+import { Fragment, useRef, useState } from "react";
+import { Button, Label, RangeSlider, Tooltip } from "flowbite-react";
 import { Stage, Layer, Line, Rect } from "react-konva";
 import Konva from "konva";
 
@@ -102,101 +102,148 @@ function Map({ options }: PropsType) {
     downloadURI(uri, "GridMap.png");
   };
 
+  const [rangeNum, setRangeNum] = useState(10);
+
   return (
     <>
-      <div className="relative my-6 overflow-hidden">
-        <div className="absolute inset-0 h-full w-full overflow-hidden">
-          <div
-            className="absolute bg-cover bg-center blur"
-            style={{
-              backgroundImage: bgImage ? `url(${bgImage})` : "none",
-              inset: "-8px",
-            }}
-          ></div>
-        </div>
-        <div
-          className="absolute bg-cover bg-center"
-          style={{
-            backgroundImage: bgImage ? `url(${bgImage})` : "none",
-            width: cols * px,
-            height: rows * px,
-            left: `calc( 50% - ${(cols * px) / 2}px )`,
-          }}
-        ></div>
-        <Fragment>
-          <Button className="m-auto mb-6" onClick={handleExport}>
+      <article className="m-auto my-6 max-w-4xl px-4 xl:max-w-7xl">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+          <Button className="m-auto md:col-start-2" onClick={handleExport}>
             Grid Mapをダウンロード
           </Button>
-          <Stage
-            width={cols * px}
-            height={rows * px}
-            className="flex justify-center"
-            ref={stageRef}
-          >
-            <Layer>
-              <Rect
-                fill={bgFill}
-                x={0}
-                y={0}
-                width={cols * px}
-                height={rows * px}
+          <div className="">
+            <Label
+              htmlFor="default-range"
+              value="マップの拡大・縮小"
+              className="mb-1 block"
+            />
+            <Tooltip
+              content={`現在の倍率：${rangeNum / 10}倍`}
+              placement="bottom"
+            >
+              <RangeSlider
+                id="default-range"
+                min="1"
+                max="10"
+                value={rangeNum}
+                onChange={(e) => {
+                  const v = Number(e.target.value);
+                  setRangeNum(v);
+                }}
               />
-              {cellArray.map((vs, is) => {
-                return vs.map((v, i) => {
-                  const {
-                    x,
-                    y,
-                    height,
-                    width,
-                    cornerRadius,
-                    fill,
-                    stroke,
-                    strokeWidth,
-                  } = v;
-                  const key = `${is}_${i}`;
+            </Tooltip>
+          </div>
+        </div>
+      </article>
+      <article
+        className="my-6"
+        style={{
+          height: (rows * px * rangeNum) / 10,
+        }}
+      >
+        <section
+          className="relative"
+          style={{ transform: `scale(${rangeNum / 10})` }}
+        >
+          <div
+            className="absolute inset-0 overflow-hidden"
+            style={{
+              height: rows * px,
+            }}
+          >
+            <div
+              className="absolute bg-cover bg-center blur"
+              style={{
+                backgroundImage: bgImage ? `url(${bgImage})` : "none",
+                inset: "-8px",
+                height: rows * px + 8 * 2,
+              }}
+            ></div>
+          </div>
+          <div
+            className="absolute bg-cover bg-center"
+            style={{
+              backgroundImage: bgImage ? `url(${bgImage})` : "none",
+              width: cols * px,
+              height: rows * px,
+              left: `calc( 50% - ${(cols * px) / 2}px )`,
+            }}
+          ></div>
+          <Fragment>
+            <Stage
+              width={cols * px}
+              height={rows * px}
+              className="absolute"
+              style={{
+                left: `calc( 50% - ${(cols * px) / 2}px )`,
+              }}
+              ref={stageRef}
+            >
+              <Layer>
+                <Rect
+                  fill={bgFill}
+                  x={0}
+                  y={0}
+                  width={cols * px}
+                  height={rows * px}
+                />
+                {cellArray.map((vs, is) => {
+                  return vs.map((v, i) => {
+                    const {
+                      x,
+                      y,
+                      height,
+                      width,
+                      cornerRadius,
+                      fill,
+                      stroke,
+                      strokeWidth,
+                    } = v;
+                    const key = `${is}_${i}`;
+                    return (
+                      <Rect
+                        key={key}
+                        x={x}
+                        y={y}
+                        height={height}
+                        width={width}
+                        cornerRadius={cornerRadius}
+                        fill={fill}
+                        stroke={stroke}
+                        strokeWidth={strokeWidth}
+                      />
+                    );
+                  });
+                })}
+                {horizontalLineArray.map((v) => {
                   return (
-                    <Rect
-                      key={key}
-                      x={x}
-                      y={y}
-                      height={height}
-                      width={width}
-                      cornerRadius={cornerRadius}
-                      fill={fill}
-                      stroke={stroke}
-                      strokeWidth={strokeWidth}
+                    <Line
+                      key={v}
+                      stroke={lineFill}
+                      strokeWidth={lineWidth}
+                      x={0}
+                      y={v * square * px * line}
+                      points={[0, 0, px * cols, 0]}
                     />
                   );
-                });
-              })}
-              {horizontalLineArray.map((v) => {
-                return (
-                  <Line
-                    key={v}
-                    stroke={lineFill}
-                    strokeWidth={lineWidth}
-                    x={0}
-                    y={v * square * px * line}
-                    points={[0, 0, px * cols, 0]}
-                  />
-                );
-              })}
-              {verticalLineArray.map((v) => {
-                return (
-                  <Line
-                    key={v}
-                    stroke={lineFill}
-                    strokeWidth={lineWidth}
-                    x={v * square * px * line}
-                    y={0}
-                    points={[0, px * rows, 0, 0]}
-                  />
-                );
-              })}
-            </Layer>
-          </Stage>
-        </Fragment>
-      </div>
+                })}
+                {verticalLineArray.map((v) => {
+                  return (
+                    <Line
+                      key={v}
+                      stroke={lineFill}
+                      strokeWidth={lineWidth}
+                      x={v * square * px * line}
+                      y={0}
+                      points={[0, px * rows, 0, 0]}
+                    />
+                  );
+                })}
+              </Layer>
+            </Stage>
+          </Fragment>
+        </section>
+      </article>
     </>
   );
 }

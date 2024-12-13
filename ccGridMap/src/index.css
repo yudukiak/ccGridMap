@@ -4,6 +4,7 @@
 
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -24,14 +25,35 @@ html,
     "ヒラギノ角ゴ ProN W3", Arial, nc3Jp, sans-serif !important;
 }
 
-/* h-16 + h-20 */
-[aria-label="Setting"] + div.overflow-y-scroll {
-  height: calc(100vh - 4rem - 5rem);
+/* h-16 */
+main {
+  height: calc(100vh - 4rem);
 }
 
 .sketch-picker {
   padding: 10px !important;
   > div:nth-child(4) {
     display: none !important;
+  }
+  input {
+    border-radius: 0.5rem;
+    box-shadow: none !important;
+    width: 100% !important;
+  }
+  input {
+    background-color: rgb(249 250 251);
+    border: 1px solid rgb(209 213 219) !important;
+    color: rgb(17 24 39) !important;
+  }
+}
+
+.dark .sketch-picker {
+  input {
+    background-color: rgb(55 65 81);
+    border: 1px solid rgb(75 85 99) !important;
+    color: rgb(255 255 255) !important;
+  }
+  label {
+    color: rgb(255 255 255) !important;
   }
 }

@@ -15,17 +15,30 @@ function App() {
     tabs: {
       base: "flex flex-col",
       tablist: {
-        base: "flex text-center justify-center py-3 h-20",
+        base: "flex text-center justify-center mt-6",
+        tabitem: {
+          styles: {
+            pills: {
+              base: "h-full",
+            },
+          },
+        },
       },
       tabitemcontainer: {
-        base: "overflow-y-scroll",
+        base: "",
       },
-      tabpanel: ""
+      tabpanel: "",
+    },
+    tooltip: {
+      target: "w-full",
     },
   };
   return (
     <Flowbite theme={{ theme: customTheme }}>
-      <Navbar className="border-b border-gray-200 dark:border-gray-700 h-16" fluid>
+      <Navbar
+        className="h-16 border-b border-gray-200 dark:border-gray-700"
+        fluid
+      >
         <Navbar.Brand>
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
             ccGridMap
@@ -61,14 +74,16 @@ function App() {
           </a>
         </div>
       </Navbar>
-      <main>
+      <main className="overflow-y-auto">
         <Tabs aria-label="Setting" style="pills">
           <Tabs.Item active title="Grid Map" icon={TbMap}>
             <GridMap />
           </Tabs.Item>
-          <Tabs.Item disabled title="Grid Items" icon={TbCubeUnfolded}>
-
-          </Tabs.Item>
+          <Tabs.Item
+            disabled
+            title="Grid Items"
+            icon={TbCubeUnfolded}
+          ></Tabs.Item>
         </Tabs>
       </main>
     </Flowbite>
