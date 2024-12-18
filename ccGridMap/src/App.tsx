@@ -48,7 +48,7 @@ function App() {
           <DarkThemeToggle />
           <a
             className="ml-4"
-            href="http://"
+            href="https://ydk.vc/ccgridmap"
             target="_blank"
             rel="noopener noreferrer"
           >
