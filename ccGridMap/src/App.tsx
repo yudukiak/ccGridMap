@@ -9,6 +9,7 @@ import {
 import { FaGithubAlt, FaMagnifyingGlass } from "react-icons/fa6";
 import { TbCubeUnfolded, TbMap } from "react-icons/tb";
 import GridMap from "./GridMap/GridMap";
+import packageJson from '../package.json';
 
 function App() {
   const customTheme: CustomFlowbiteTheme = {
@@ -68,7 +69,7 @@ function App() {
             <Button color="light" size="xs">
               <span className="flex items-center">
                 <FaGithubAlt className="mr-2" />
-                v1.0.0
+                v{packageJson.version}
               </span>
             </Button>
           </a>
