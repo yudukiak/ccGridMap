@@ -1,9 +1,11 @@
 {
-  "name": "flowbite-react-template-vite",
+  "name": "ccgridmap",
+  "homepage": "https://yudukiak.github.io/ccgridmap/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+		"deploy": "npm run build && gh-pages -d build -m \"Updates --skip-ci\"",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
@@ -35,6 +37,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "eslint-plugin-tailwindcss": "^3.15.1",
+    "gh-pages": "^6.2.0",
     "postcss": "^8.4.49",
     "prettier-plugin-tailwindcss": "^0.5.12",
     "tailwindcss": "^3.4.16",
