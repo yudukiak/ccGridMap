@@ -2,7 +2,7 @@
   "name": "ccgridmap",
   "homepage": "https://yudukiak.github.io/ccgridmap/",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "scripts": {
 		"deploy": "npm run build && gh-pages -d dist -m \"Updates\"",
