@@ -108,7 +108,16 @@ function Form({ options, update }: PropsType) {
           <p className="col-span-2 text-xl font-black md:col-span-3 lg:col-span-4 xl:col-span-6">
             マスの設定
           </p>
-
+          <div>
+            <Sketch
+              id="fill"
+              value="マスの色"
+              color={options.fill}
+              onChange={(e: SketchOnChangeType) =>
+                update("fill", `rgba(${e.r}, ${e.g}, ${e.b}, ${e.a})`)
+              }
+            />
+          </div>
           <div>
             <Label htmlFor="margin" value="余白は何px？" />
             <TextInput
@@ -120,20 +129,6 @@ function Form({ options, update }: PropsType) {
               onChange={(e) => {
                 const v = Number(e.target.value);
                 update("margin", v > 0 ? v : 0);
-              }}
-            />
-          </div>
-          <div>
-            <Label htmlFor="strokeWidth" value="線の太さ何px？" />
-            <TextInput
-              id="strokeWidth"
-              type="number"
-              min="0"
-              icon={PiArrowsOutLineVerticalFill}
-              value={options.strokeWidth}
-              onChange={(e) => {
-                const v = Number(e.target.value);
-                update("strokeWidth", v > 0 ? v : 0);
               }}
             />
           </div>
@@ -152,13 +147,17 @@ function Form({ options, update }: PropsType) {
             />
           </div>
           <div>
-            <Sketch
-              id="fill"
-              value="マスの色"
-              color={options.fill}
-              onChange={(e: SketchOnChangeType) =>
-                update("fill", `rgba(${e.r}, ${e.g}, ${e.b}, ${e.a})`)
-              }
+            <Label htmlFor="strokeWidth" value="線の太さ何px？" />
+            <TextInput
+              id="strokeWidth"
+              type="number"
+              min="0"
+              icon={PiArrowsOutLineVerticalFill}
+              value={options.strokeWidth}
+              onChange={(e) => {
+                const v = Number(e.target.value);
+                update("strokeWidth", v > 0 ? v : 0);
+              }}
             />
           </div>
           <div>
