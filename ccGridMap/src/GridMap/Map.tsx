@@ -131,7 +131,7 @@ function Map({ options }: PropsType) {
         </div>
       </article>
       <article
-        className="my-6"
+        className="my-6 overflow-hidden"
         style={{
           height: (rows * px * rangeNum) / 10,
         }}
