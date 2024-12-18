@@ -102,7 +102,7 @@ function Map({ options }: PropsType) {
   return (
     <>
       <article className="m-auto my-6 max-w-4xl px-4 xl:max-w-7xl">
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3">
           <Button className="m-auto md:col-start-2" onClick={handleExport}>
             Grid Mapをダウンロード
           </Button>

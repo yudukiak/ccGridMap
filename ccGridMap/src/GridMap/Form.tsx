@@ -41,8 +41,8 @@ function Form({ options, update }: PropsType) {
   return (
     <article className="m-auto my-6 max-w-4xl px-4 xl:max-w-7xl">
       <Card className="my-4">
-        <section className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-          <p className="col-span-2 text-xl font-black md:col-span-3 lg:col-span-4 xl:col-span-6">
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+          <p className="col-span-1 sm:col-span-2 text-xl font-black md:col-span-3 lg:col-span-4 xl:col-span-6">
             盤面の設定
           </p>
           <div>
@@ -104,8 +104,8 @@ function Form({ options, update }: PropsType) {
         </section>
       </Card>
       <Card className="my-4">
-        <section className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-          <p className="col-span-2 text-xl font-black md:col-span-3 lg:col-span-4 xl:col-span-6">
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+          <p className="col-span-1 sm:col-span-2 text-xl font-black md:col-span-3 lg:col-span-4 xl:col-span-6">
             マスの設定
           </p>
           <div>
@@ -183,8 +183,8 @@ function Form({ options, update }: PropsType) {
         </section>
       </Card>
       <Card className="my-4">
-        <section className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-          <p className="col-span-2 text-xl font-black md:col-span-3 lg:col-span-4 xl:col-span-6">
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+          <p className="col-span-1 sm:col-span-2 text-xl font-black md:col-span-3 lg:col-span-4 xl:col-span-6">
             罫線の設定
           </p>
 
@@ -229,8 +229,8 @@ function Form({ options, update }: PropsType) {
         </section>
       </Card>
       <Card className="my-4">
-        <section className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-          <p className="col-span-2 text-xl font-black md:col-span-3 lg:col-span-4 xl:col-span-6">
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+          <p className="col-span-1 sm:col-span-2 text-xl font-black md:col-span-3 lg:col-span-4 xl:col-span-6">
             その他の設定
           </p>
           <div className="col-span-2">
