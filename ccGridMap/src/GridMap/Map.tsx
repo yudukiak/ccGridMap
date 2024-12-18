@@ -237,6 +237,7 @@ function Map({ options }: PropsType) {
               </Layer>
             </Stage>
           </Fragment>
+          <div className="absolute inset-0" style={{ height: rows * px, }}></div>
         </section>
       </article>
     </>
