@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SketchPicker, ColorResult } from "react-color";
 import { IoMdColorPalette } from "react-icons/io";
-import { Button, Popover } from "flowbite-react";
+import { Popover } from "flowbite-react";
 
 type PropsType = {
   id: string;
@@ -10,7 +10,7 @@ type PropsType = {
   onChange: Function;
 };
 
-function Sketch({ id, value, color, onChange }: PropsType) {
+function Sketch({ value, color, onChange }: PropsType) {
   const state = {
     displayColorPicker: false,
     color: { r: 0, g: 0, b: 0, a: 1 },
@@ -32,9 +32,6 @@ function Sketch({ id, value, color, onChange }: PropsType) {
       ...prev,
       displayColorPicker: !options.displayColorPicker,
     }));
-  };
-  const handleClose = () => {
-    setOptions((prev) => ({ ...prev, displayColorPicker: false }));
   };
   const handleChange = (color: ColorResult) => {
     const { r, g, b, a } = color.rgb;
