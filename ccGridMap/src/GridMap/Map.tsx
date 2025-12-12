@@ -107,11 +107,7 @@ function Map({ options }: PropsType) {
             Grid Mapをダウンロード
           </Button>
           <div className="">
-            <Label
-              htmlFor="default-range"
-              value="マップの拡大・縮小"
-              className="mb-1 block"
-            />
+            <Label htmlFor="default-range" className="mb-1 block">マップの拡大・縮小</Label>
             <Tooltip
               content={`現在の倍率：${rangeNum / 10}倍`}
               placement="bottom"
