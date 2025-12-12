@@ -16,7 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@types/react-color": "^3.0.12",
+    "@types/react-color": "^3.0.13",
     "flowbite-react": "^0.8.0",
     "konva": "^9.3.16",
     "react": "^18.2.0",
