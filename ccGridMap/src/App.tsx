@@ -1,15 +1,19 @@
 import {
-  Flowbite,
-  CustomFlowbiteTheme,
+  ThemeProvider,
   Button,
   DarkThemeToggle,
   Navbar,
+  NavbarBrand,
   Tabs,
+  TabItem,
 } from "flowbite-react";
+import type { FlowbiteTheme, DeepPartial } from "flowbite-react/types";
 import { FaGithubAlt, FaMagnifyingGlass } from "react-icons/fa6";
 import { TbCubeUnfolded, TbMap } from "react-icons/tb";
 import GridMap from "./GridMap/GridMap";
 import packageJson from '../package.json';
+
+type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
 function App() {
   const customTheme: CustomFlowbiteTheme = {
@@ -18,7 +22,7 @@ function App() {
       tablist: {
         base: "flex text-center justify-center mt-6",
         tabitem: {
-          styles: {
+          variant: {
             pills: {
               base: "h-full",
             },
@@ -35,16 +39,16 @@ function App() {
     },
   };
   return (
-    <Flowbite theme={{ theme: customTheme }}>
+    <ThemeProvider theme={customTheme}>
       <Navbar
         className="h-16 border-b border-gray-200 dark:border-gray-700"
         fluid
       >
-        <Navbar.Brand>
+        <NavbarBrand>
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
             ccGridMap
           </span>
-        </Navbar.Brand>
+        </NavbarBrand>
         <div className="flex items-center">
           <DarkThemeToggle />
           <a
@@ -76,18 +80,18 @@ function App() {
         </div>
       </Navbar>
       <main className="overflow-y-auto">
-        <Tabs aria-label="Setting" style="pills">
-          <Tabs.Item active title="Grid Map" icon={TbMap}>
+        <Tabs aria-label="Setting" variant="pills">
+          <TabItem active title="Grid Map" icon={TbMap}>
             <GridMap />
-          </Tabs.Item>
-          <Tabs.Item
+          </TabItem>
+          <TabItem
             disabled
             title="Grid Items"
             icon={TbCubeUnfolded}
-          ></Tabs.Item>
+          ></TabItem>
         </Tabs>
       </main>
-    </Flowbite>
+    </ThemeProvider>
   );
 }
 

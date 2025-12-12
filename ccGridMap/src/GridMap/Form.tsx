@@ -46,7 +46,7 @@ function Form({ options, update }: PropsType) {
             盤面の設定
           </p>
           <div>
-            <Label htmlFor="cols" value="横幅" />
+            <Label htmlFor="cols">横幅</Label>
             <TextInput
               id="cols"
               type="number"
@@ -60,7 +60,7 @@ function Form({ options, update }: PropsType) {
             />
           </div>
           <div>
-            <Label htmlFor="rows" value="縦幅" />
+            <Label htmlFor="rows">縦幅</Label>
             <TextInput
               id="rows"
               type="number"
@@ -74,7 +74,7 @@ function Form({ options, update }: PropsType) {
             />
           </div>
           <div>
-            <Label htmlFor="square" value="1マスあたりの駒サイズは？" />
+            <Label htmlFor="square">1マスあたりの駒サイズは？</Label>
             <TextInput
               id="square"
               type="number"
@@ -88,7 +88,7 @@ function Form({ options, update }: PropsType) {
             />
           </div>
           <div>
-            <Label htmlFor="px" value="1マスあたり何px？" />
+            <Label htmlFor="px">1マスあたり何px？</Label>
             <TextInput
               id="px"
               type="number"
@@ -119,7 +119,7 @@ function Form({ options, update }: PropsType) {
             />
           </div>
           <div>
-            <Label htmlFor="margin" value="余白は何px？" />
+            <Label htmlFor="margin">余白は何px？</Label>
             <TextInput
               id="margin"
               type="number"
@@ -133,7 +133,7 @@ function Form({ options, update }: PropsType) {
             />
           </div>
           <div>
-            <Label htmlFor="cornerRadius" value="マスの丸みは何px？" />
+            <Label htmlFor="cornerRadius">マスの丸みは何px？</Label>
             <TextInput
               id="cornerRadius"
               type="number"
@@ -147,7 +147,7 @@ function Form({ options, update }: PropsType) {
             />
           </div>
           <div>
-            <Label htmlFor="strokeWidth" value="線の太さ何px？" />
+            <Label htmlFor="strokeWidth">線の太さ何px？</Label>
             <TextInput
               id="strokeWidth"
               type="number"
@@ -189,7 +189,7 @@ function Form({ options, update }: PropsType) {
           </p>
 
           <div>
-            <Label htmlFor="line" value="何マスごとに罫線を引く？" />
+            <Label htmlFor="line">何マスごとに罫線を引く？</Label>
             <TextInput
               id="line"
               type="number"
@@ -203,7 +203,7 @@ function Form({ options, update }: PropsType) {
             />
           </div>
           <div>
-            <Label htmlFor="lineWidth" value="罫線の太さ何px？" />
+            <Label htmlFor="lineWidth">罫線の太さ何px？</Label>
             <TextInput
               id="lineWidth"
               type="number"
@@ -234,7 +234,7 @@ function Form({ options, update }: PropsType) {
             その他の設定
           </p>
           <div className="col-span-2">
-            <Label htmlFor="bgImage" value="お試し画像" />
+            <Label htmlFor="bgImage">お試し画像</Label>
             <FileInput
               id="bgImage"
               accept="image/*"

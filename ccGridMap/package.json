@@ -5,7 +5,7 @@
   "version": "1.0.2",
   "type": "module",
   "scripts": {
-		"deploy": "npm run build && gh-pages -d dist -m \"Updates\"",
+    "deploy": "npm run build && gh-pages -d dist -m \"Updates\"",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
@@ -26,6 +26,8 @@
     "react-konva": "^19.2.1"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@tailwindcss/vite": "^4.1.18",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.49.0",
